@@ -12,3 +12,4 @@ This repository houses the development of BridGIT, an AI-driven recursive optimi
 Refer to individual folders for more details.
 
 ---
+"Triggering GitHub Action after script addition".
