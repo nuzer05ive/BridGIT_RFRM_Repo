@@ -22,10 +22,12 @@ jobs:
         run: pip install numpy matplotlib
 
       - name: Run Recursive Fractal Model
-        run: python Recursive_Core/RFRM_Algorithms/core_rfrm.py
+        run: |
+          python Recursive_Core/RFRM_Algorithms/core_rfrm.py
+          ls -la  # List files to confirm output location
 
       - name: Upload Visualization
         uses: actions/upload-artifact@v3
         with:
           name: RFRM-visualization
-          path: RFRM_output.png
+          path: ./RFRM_output.png  # Ensure correct relative path
