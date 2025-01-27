@@ -24,10 +24,16 @@ jobs:
       - name: Run Recursive Fractal Model
         run: |
           python Recursive_Core/RFRM_Algorithms/core_rfrm.py
-          ls -la  # List files to confirm output location
+          ls -la  # Check if the output file exists
 
       - name: Upload Visualization
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Updated from v3 to v4
         with:
           name: RFRM-visualization
-          path: ./RFRM_output.png  # Ensure correct relative path
+          path: ./RFRM_output.png  # Ensure correct path
+
+      - name: Download Visualization (Test Step)
+        uses: actions/download-artifact@v4  # Updated from v3 to v4
+        with:
+          name: RFRM-visualization
+          path: ./downloaded_artifacts
