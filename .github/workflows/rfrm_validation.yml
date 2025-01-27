@@ -1,0 +1,31 @@
+name: RFRM Validation Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate-model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: pip install numpy matplotlib
+
+      - name: Run Recursive Fractal Model
+        run: python Recursive_Core/RFRM_Algorithms/core_rfrm.py
+
+      - name: Upload Visualization
+        uses: actions/upload-artifact@v3
+        with:
+          name: RFRM-visualization
+          path: RFRM_output.png
